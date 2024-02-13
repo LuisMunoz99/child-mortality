@@ -15,8 +15,8 @@ p_load(dplyr,
        stringr)
 
 
-args <- list(input1 = here("import/input/2022 DEFUNCIONES (CPI)"), 
-             input2 = here("import/input/`2021 hasta agosto 2022 - clave_ SuC@&sUhP#1`"),
+args <- list(input1 = here("import/regdem/input/2022 DEFUNCIONES (CPI)"), 
+             input2 = here("import/regdem/input/`2021 hasta agosto 2022 - clave_ SuC@&sUhP#1`"),
              output = here("spatial_analysis/ice/import/output/regdem_.csv"))
 
 
