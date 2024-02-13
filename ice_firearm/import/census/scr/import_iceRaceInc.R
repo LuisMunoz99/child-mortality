@@ -1,21 +1,26 @@
-Importing data from census 
+# Authors:     LM
+# Maintainers: LM
+# Date: 12-Feb-24
 
-https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html
+# Importing data from census 
+# ref: https://www.census.gov/topics/income-poverty/poverty/guidance/poverty-measures.html
+# =========================================
+
+# --- libs --- 
+if(!require(pacman))install.packages("pacman")
+p_load(dplyr, 
+       here,
+       data.table,
+       tidycensus)
 
 
-# example code for creating the index of concentration at the extremes for the 
-# measure of racialized economic segregation (high income white non-hispanic 
-# vs. low income people of color) using tidycensus
+# --- import --- 
+var_dic <- load_variables(2021, "acs5") # Importing all variables in census
 
-# create a data dictionary detailing the variables we're going to use - 
-# 
-# associating each of the variables a more readable/friendly `shortname` and a
-# description can help make the subsequent code more readable and thus easier
-# to debug in case you run into any errors.
-# 
-variables_dict <-
+# Variables corresponding to ICE measure
+ice_vars <-
   tibble::tribble(
-    ~var,          ~shortname,      ~desc,
+    ~name,          ~shortname,      ~desc,
     "B19001_001",  'hhinc_total',   "total population for household income estimates",
     "B19001A_002", 'hhinc_w_1',     "white n.h. pop with household income <$10k",
     "B19001A_003", 'hhinc_w_2',     "white n.h. pop with household income $10k-14 999k",
@@ -30,6 +35,10 @@ variables_dict <-
     "B19001_004",  'hhinc_total_3', "total pop with household income $15k-19 999k",
     "B19001_005",  'hhinc_total_4', "total pop with household income $20k-24 999k"
   )
+
+
+# Joining vars with information in census var dictionary
+ice_vars_dic <- ice_vars %>% left_join(var_dic, by = "name")
 
 # fetch data from the american community survey API (or application programming interface)
 ICEraceinc <- get_acs(
