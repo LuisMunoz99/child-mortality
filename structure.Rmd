@@ -1,0 +1,46 @@
+---
+title: "notes on MethodAppen"
+author: "Luis Muñoz"
+date: '2024-02-27'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## resources
+### Variables definitions
+### Introductory note 
+### methoddological appendix 
+
+
+## principal causas
+### Import 
+  Import 2007-2021 de las causas que interesan
+  Import census data
+  Import other countries causes of deaths
+
+### Cantidad - Cantidad de muertes por causa 
+### Interpolation-census
+### Merge - merging census data with totals 
+### Mortality rates
+
+
+
+## Plots (se filtra dependiendo el año deinteres )
+tasa Cruce USA vs UPR por año 
+table of cantidad
+cantidad de muertes por año arma de fuego 
+piechart suicides by gender (tentative)
+mosaic plot cantidad de muertes 
+
+  
+
+
+## Suicidios con arma de fuego menores 
+import 2007-2021 suicidios data 
+
+
+
+
